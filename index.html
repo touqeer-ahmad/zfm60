@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Employees Status</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/static/myapp/bootstrap.min.css">
+  <script src="/static/myapp/jquery.min.js"></script>
+  <script src="/static/myapp/bootstrap.min.js"></script>
+ </head>
+<body>
+  <div class="container-fluid">
+    <center><h1>Employee Status</h1></center>
+    <center><h3>Stevens Institute of Technology</h3></center>
+    <center><h4>{{timestamp}}</h4><center>
+    <div class="row">
+      <div class="col-sm-2"><h3>Name</h3></div>
+      <div class="col-sm-10"><h3>Designation</h3></div>
+     </div>
+    <div class="row">
+      <div class="col-sm-2"><h4>{{fname}} {{lname}}</h4></div
+      <div class="col-sm-4"><h4>{{dpt}}</h4></div>
+    </div>
+  </div>
+  <p>{{r}}</p>
+<center><h3>Enroll</h3><center>
+<form action="" method="post">{% csrf_token %}
+<center><input type="submit" name="on" value="enroll" /><center>
+</form>
+<center><h2>Complete Employee List</h2><center>
+
+{% if latest_employee_list %}
+<table style="height: 90px;" width="350">
+<tbody>
+	<tr>
+		<td><strong>Name<strong></td>
+		<td><strong>Designation<strong></td>
+	</tr>
+   {% for employee in latest_employee_list %}
+	<tr>
+		<td>{{employee.fname}}</td>
+		<td>{{employee.dpt}}</td>
+	</tr>
+    {% endfor %}
+{% else %}
+	<p>Data is not available for any Employee.</p>
+{% endif %}
+</tbody>
+</body>
+</html>
